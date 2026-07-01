@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'wouter';
-import { Moon, Sun, Menu, X } from 'lucide-react';
-import { useTheme } from '@/store/themeStore';
+import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const WA_NUMBER = '573001234567'; // ← cambia por tu número real
+const WA_NUMBER = '573001234567';
 const WA_MESSAGE = encodeURIComponent('Hola Miguel, vi tu portafolio y me gustaría hablar contigo sobre un proyecto.');
 const WA_URL = `https://wa.me/${WA_NUMBER}?text=${WA_MESSAGE}`;
 
@@ -15,7 +14,6 @@ const WhatsAppIcon = () => (
 );
 
 export function Navbar() {
-  const { theme, toggleTheme } = useTheme();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -48,11 +46,7 @@ export function Navbar() {
     >
       <div className="container mx-auto px-4 sm:px-6 h-full flex items-center justify-between gap-4">
         <Link href="/" className="shrink-0" aria-label="NexusDigital">
-          <img
-            src={theme === 'dark' ? '/logo-blanco.png' : '/logo-negro.png'}
-            alt="NexusDigital"
-            className="h-9 w-auto object-contain"
-          />
+          <img src="/logo-blanco.png" alt="NexusDigital" className="h-9 w-auto object-contain" />
         </Link>
 
         {/* ── Desktop Nav ── */}
@@ -67,8 +61,6 @@ export function Navbar() {
               {link.name}
             </a>
           ))}
-
-          {/* WhatsApp CTA — desktop only */}
           <a
             href={WA_URL}
             target="_blank"
@@ -78,25 +70,10 @@ export function Navbar() {
             <WhatsAppIcon />
             WhatsApp
           </a>
-
-          <button
-            onClick={toggleTheme}
-            className="p-2 rounded-full hover:bg-muted text-foreground transition-colors shrink-0"
-            aria-label="Toggle theme"
-          >
-            {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-          </button>
         </nav>
 
-        {/* ── Mobile: only theme + hamburger (WhatsApp lives in floating btn) ── */}
-        <div className="md:hidden flex items-center gap-1">
-          <button
-            onClick={toggleTheme}
-            className="p-2 rounded-full hover:bg-muted text-foreground transition-colors"
-            aria-label="Toggle theme"
-          >
-            {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-          </button>
+        {/* ── Mobile: hamburger only ── */}
+        <div className="md:hidden flex items-center">
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="p-2 rounded-md hover:bg-muted text-foreground transition-colors"
@@ -127,7 +104,6 @@ export function Navbar() {
                   {link.name}
                 </a>
               ))}
-              {/* WhatsApp inside mobile menu */}
               <a
                 href={WA_URL}
                 target="_blank"
