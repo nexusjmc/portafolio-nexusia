@@ -1,0 +1,27 @@
+kind = "web"
+previewPath = "/"
+title = "NexusDigital Portfolio"
+version = "1.0.0"
+id = "artifacts/nexusdigital-portfolio"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 25131
+
+[services.development]
+run = "pnpm --filter @workspace/nexusdigital-portfolio run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/nexusdigital-portfolio", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/nexusdigital-portfolio/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "25131"
+BASE_PATH = "/"

@@ -1,44 +1,60 @@
-# [Project name]
+# NexusDigital Portfolio
 
-_Replace the heading above with the project's name, and this line with one sentence describing what this app does for users._
+Personal portfolio SPA for Miguel Angel Quintero Giraldo (NexusDigital) — full-stack developer specializing in automation and AI.
 
 ## Run & Operate
 
-- `pnpm --filter @workspace/api-server run dev` — run the API server (port 5000)
-- `pnpm run typecheck` — full typecheck across all packages
-- `pnpm run build` — typecheck + build all packages
-- `pnpm --filter @workspace/api-spec run codegen` — regenerate API hooks and Zod schemas from the OpenAPI spec
-- `pnpm --filter @workspace/db run push` — push DB schema changes (dev only)
-- Required env: `DATABASE_URL` — Postgres connection string
+- `pnpm --filter @workspace/nexusdigital-portfolio run dev` — portfolio dev server (served at `/`)
+- `pnpm --filter @workspace/nexusdigital-portfolio run typecheck` — typecheck the portfolio
+- `pnpm --filter @workspace/api-server run dev` — API server (port varies)
 
 ## Stack
 
-- pnpm workspaces, Node.js 24, TypeScript 5.9
-- API: Express 5
-- DB: PostgreSQL + Drizzle ORM
-- Validation: Zod (`zod/v4`), `drizzle-zod`
-- API codegen: Orval (from OpenAPI spec)
-- Build: esbuild (CJS bundle)
+- React + Vite + TypeScript
+- Tailwind CSS v4 with full NexusDigital brand palette
+- Framer Motion for animations
+- Wouter for routing (SPA, no backend)
+- embla-carousel-react for testimonials slider
+- react-icons for tech + social icons
+- Custom module-level theme store (no zustand dependency)
 
 ## Where things live
 
-_Populate as you build — short repo map plus pointers to the source-of-truth file for DB schema, API contracts, theme files, etc._
+- `artifacts/nexusdigital-portfolio/src/pages/HomePage.tsx` — main scroll page (all sections)
+- `artifacts/nexusdigital-portfolio/src/pages/CaseStudyPage.tsx` — `/proyecto/:id` detail page
+- `artifacts/nexusdigital-portfolio/src/data/projects.ts` — 4 hardcoded project objects
+- `artifacts/nexusdigital-portfolio/src/components/` — all section components
+- `artifacts/nexusdigital-portfolio/src/store/themeStore.ts` — light/dark toggle (module-level singleton)
+- `artifacts/nexusdigital-portfolio/src/hooks/useInView.ts` — IntersectionObserver scroll animation hook
+
+## Brand
+
+- Primary: #011275 (deep blue)
+- Accent: #3D5ED4 (vibrant blue)
+- Accent light: #B3C3FC
+- Font: Montserrat (600 SemiBold headings, 500 Medium body)
 
 ## Architecture decisions
 
-_Populate as you build — non-obvious choices a reader couldn't infer from the code (3-5 bullets)._
+- No backend — all data is static/hardcoded (projects, testimonials, blog, services)
+- Theme toggle uses a module-level subscriber pattern (no zustand) to share state across components without a Context wrapper
+- useInView uses `RefObject<HTMLElement | null>` to satisfy modern React types
+- SiLinkedin replaced with FaLinkedin (react-icons/fa) — not available in react-icons/si v5
+- SiOpenai replaced with custom inline SVG path
 
 ## Product
 
-_Describe the high-level user-facing capabilities of this app once they exist._
+A complete personal portfolio with: loading screen animation, fixed navbar with dark mode toggle, hero with typing effect, 4-service grid, bento-grid projects with category filter, individual case study pages, tech stack with animated bars, about section, 5-step process timeline, testimonials carousel, client logos, blog grid, contact form with loading state, and footer.
 
 ## User preferences
 
-_Populate as you build — explicit user instructions worth remembering across sessions._
+_Populate as you build._
 
 ## Gotchas
 
-_Populate as you build — sharp edges, "always run X before Y" rules._
+- Do not import `SiLinkedin` from react-icons/si — use `FaLinkedin` from react-icons/fa
+- Do not use zustand — the project uses a custom module-level theme store
+- Google Fonts @import must be the VERY FIRST line in index.css
 
 ## Pointers
 
