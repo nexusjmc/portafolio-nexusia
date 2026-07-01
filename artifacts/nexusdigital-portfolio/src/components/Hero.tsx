@@ -42,16 +42,14 @@ export function Hero() {
     <section className="relative min-h-[100dvh] flex items-center justify-center overflow-hidden pt-16">
 
       {/* ── Background ── */}
-      <div className="absolute inset-0 bg-[#060618]" />
-      <div className="absolute inset-0 bg-gradient-to-br from-[#0d1b6e]/80 via-[#060618] to-[#060618]" />
+      <div className="absolute inset-0 bg-gradient-to-br from-primary via-[#021a8a] to-[#0a0a2e]" />
 
       {/* Glow orbs */}
-      <div className="absolute top-[-10%] left-[-5%]  w-[600px] h-[600px] rounded-full bg-[#3D5ED4]/20 blur-[140px] pointer-events-none" />
-      <div className="absolute bottom-[-10%] right-[-5%] w-[500px] h-[500px] rounded-full bg-[#B3C3FC]/10 blur-[130px] pointer-events-none" />
-      <div className="absolute top-[40%] left-[50%] -translate-x-1/2 w-[800px] h-[300px] rounded-full bg-accent/10 blur-[100px] pointer-events-none" />
+      <div className="absolute -top-32 -right-32 w-[600px] h-[600px] rounded-full bg-accent/30 blur-[120px] pointer-events-none" />
+      <div className="absolute -bottom-20 -left-20 w-[400px] h-[400px] rounded-full bg-[#B3C3FC]/20 blur-[100px] pointer-events-none" />
 
       {/* Grid */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:44px_44px] pointer-events-none" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.04)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
 
       {/* Floating particles */}
       {[
@@ -78,19 +76,7 @@ export function Hero() {
       ))}
 
       {/* ── Content ── */}
-      <div className="container mx-auto px-4 sm:px-6 relative z-10 flex flex-col items-center text-center">
-
-        {/* Top badge */}
-        <motion.div
-          initial={{ opacity: 0, y: -12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="mb-8 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm px-5 py-2"
-        >
-          <img src="/logo-blanco.png" alt="NexusDigital" className="h-5 w-auto object-contain opacity-80" />
-          <span className="w-px h-4 bg-white/20" />
-          <span className="text-white/60 text-sm font-medium tracking-wide">Agencia Digital Full-Stack</span>
-        </motion.div>
+      <div className="container mx-auto px-4 sm:px-6 relative z-10 flex flex-col items-center text-center pb-28">
 
         {/* Headline */}
         <motion.h1
@@ -164,20 +150,6 @@ export function Hero() {
           </a>
         </motion.div>
 
-        {/* Social proof row */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.85 }}
-          className="mt-14 flex flex-wrap justify-center gap-8 text-sm text-white/30"
-        >
-          {[['30+', 'Proyectos'], ['5+', 'Años exp.'], ['24h', 'Respuesta']].map(([val, lbl]) => (
-            <div key={lbl} className="flex flex-col items-center gap-0.5">
-              <span className="text-white/80 font-bold text-lg">{val}</span>
-              <span>{lbl}</span>
-            </div>
-          ))}
-        </motion.div>
       </div>
 
       {/* Scroll indicator */}

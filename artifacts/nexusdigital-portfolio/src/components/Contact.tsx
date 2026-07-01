@@ -10,12 +10,6 @@ const WhatsAppIcon = ({ size = 6 }: { size?: number }) => (
   </svg>
 );
 
-const stats = [
-  { value: '30+', label: 'Proyectos entregados' },
-  { value: '24h', label: 'Tiempo de respuesta' },
-  { value: '100%', label: 'Clientes satisfechos' },
-];
-
 const checks = ['Sin costo inicial', 'Propuesta concreta', 'Sin compromiso'];
 
 export function Contact() {
@@ -34,27 +28,6 @@ export function Contact() {
 
       <div className="container mx-auto px-4 sm:px-6 relative z-10">
 
-        {/* ── Stats bar ── */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="flex flex-wrap justify-center gap-px mb-16 max-w-2xl mx-auto rounded-2xl overflow-hidden border border-white/10"
-        >
-          {stats.map(({ value, label }, i) => (
-            <div
-              key={label}
-              className={`flex-1 min-w-[120px] flex flex-col items-center py-5 px-4 bg-white/5 backdrop-blur-sm ${
-                i < stats.length - 1 ? 'border-r border-white/10' : ''
-              }`}
-            >
-              <span className="text-3xl font-black text-white">{value}</span>
-              <span className="text-xs text-white/50 mt-1 text-center">{label}</span>
-            </div>
-          ))}
-        </motion.div>
-
         {/* ── Main card ── */}
         <motion.div
           initial={{ opacity: 0, y: 32 }}
@@ -63,12 +36,6 @@ export function Contact() {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="max-w-3xl mx-auto rounded-3xl border border-white/10 bg-white/5 backdrop-blur-md p-10 md:p-16 flex flex-col items-center text-center shadow-[0_0_80px_rgba(61,94,212,0.15)]"
         >
-          {/* Available badge */}
-          <div className="mb-7 inline-flex items-center gap-2 bg-[#25D366]/15 border border-[#25D366]/30 rounded-full px-4 py-1.5">
-            <span className="w-2 h-2 rounded-full bg-[#25D366] animate-pulse" />
-            <span className="text-[#25D366] text-sm font-semibold tracking-wide">Disponible para nuevos proyectos</span>
-          </div>
-
           {/* Headline */}
           <h2 className="text-[clamp(1.8rem,4.5vw,3.5rem)] font-black text-white leading-tight tracking-tight mb-5">
             ¿Listo para llevar tu proyecto{' '}
