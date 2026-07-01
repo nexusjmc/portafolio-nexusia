@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Link } from 'wouter';
+import { ExternalLink } from 'lucide-react';
 import { projects } from '@/data/projects';
 import { useInView } from '@/hooks/useInView';
 
@@ -22,7 +22,7 @@ export function Projects() {
               <span className="absolute -bottom-2 left-0 w-1/2 h-1 bg-accent"></span>
             </h2>
           </div>
-          
+
           <div className="flex flex-wrap gap-2">
             {categories.map((cat) => (
               <button
@@ -58,11 +58,18 @@ export function Projects() {
                   index === 0 && filter === 'Todo' ? 'md:col-span-2' : ''
                 }`}
               >
-                <div className={`w-full ${index === 0 && filter === 'Todo' ? 'h-72 md:h-96' : 'h-64'} bg-gradient-to-br ${project.gradient} transition-transform duration-500 group-hover:scale-105`} />
-                
-                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center text-white p-6">
-                  <h3 className="text-2xl font-bold mb-2 text-center">{project.title}</h3>
-                  <div className="flex gap-2 mb-6">
+                {/* Gradient image */}
+                <div
+                  className={`w-full ${
+                    index === 0 && filter === 'Todo' ? 'h-72 md:h-96' : 'h-64'
+                  } bg-gradient-to-br ${project.gradient} transition-transform duration-500 group-hover:scale-105`}
+                />
+
+                {/* Hover overlay */}
+                <div className="absolute inset-0 bg-black/65 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center text-white p-6 gap-4">
+                  <h3 className="text-2xl font-bold text-center">{project.title}</h3>
+                  <p className="text-white/80 text-center text-sm max-w-sm">{project.description}</p>
+                  <div className="flex gap-2 flex-wrap justify-center">
                     <span className="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-xs font-medium">
                       {project.category}
                     </span>
@@ -70,9 +77,22 @@ export function Projects() {
                       {project.clientType}
                     </span>
                   </div>
-                  <Link href={`/proyecto/${project.id}`} className="px-6 py-3 bg-accent hover:bg-accent/90 text-white rounded-full font-semibold transition-colors transform hover:-translate-y-1">
-                    Ver caso
-                  </Link>
+                  <a
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 px-6 py-3 bg-accent hover:bg-accent/90 text-white rounded-full font-semibold transition-all transform hover:-translate-y-1 text-sm"
+                  >
+                    <ExternalLink className="w-4 h-4" />
+                    Ver proyecto
+                  </a>
+                </div>
+
+                {/* Static label (always visible bottom-left) */}
+                <div className="absolute bottom-4 left-4 opacity-100 group-hover:opacity-0 transition-opacity">
+                  <span className="px-3 py-1.5 bg-black/50 backdrop-blur-sm rounded-full text-xs font-semibold text-white">
+                    {project.title}
+                  </span>
                 </div>
               </motion.div>
             ))}

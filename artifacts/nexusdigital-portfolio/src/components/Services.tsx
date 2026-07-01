@@ -32,9 +32,7 @@ export function Services() {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
+      transition: { staggerChildren: 0.1 },
     },
   };
 
@@ -58,19 +56,19 @@ export function Services() {
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
-          className="grid grid-cols-1 md:grid-cols-2 gap-8"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
         >
           {services.map((service, index) => (
             <motion.div
               key={index}
               variants={itemVariants}
-              className="group bg-card rounded-2xl p-8 border border-border shadow-sm hover:shadow-xl hover:border-accent hover:-translate-y-1 transition-all duration-300"
+              className="group bg-card rounded-2xl p-6 border border-border shadow-sm hover:shadow-xl hover:border-accent hover:-translate-y-1 transition-all duration-300 flex flex-col"
             >
-              <div className="w-16 h-16 rounded-xl bg-accent/10 flex items-center justify-center mb-6 text-accent group-hover:scale-110 transition-transform">
-                <service.icon className="w-8 h-8" />
+              <div className="w-14 h-14 rounded-xl bg-accent/10 flex items-center justify-center mb-5 text-accent group-hover:scale-110 transition-transform">
+                <service.icon className="w-7 h-7" />
               </div>
-              <h3 className="text-xl font-semibold mb-3">{service.title}</h3>
-              <p className="text-muted-foreground leading-relaxed">
+              <h3 className="text-lg font-semibold mb-3">{service.title}</h3>
+              <p className="text-muted-foreground leading-relaxed text-sm flex-1">
                 {service.description}
               </p>
             </motion.div>

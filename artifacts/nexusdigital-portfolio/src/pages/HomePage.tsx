@@ -4,7 +4,6 @@ import { Navbar } from '@/components/Navbar';
 import { Hero } from '@/components/Hero';
 import { Services } from '@/components/Services';
 import { Projects } from '@/components/Projects';
-import { TechStack } from '@/components/TechStack';
 import { AboutMe } from '@/components/AboutMe';
 import { WorkProcess } from '@/components/WorkProcess';
 import { Testimonials } from '@/components/Testimonials';
@@ -19,12 +18,11 @@ export default function HomePage() {
       <CustomCursor />
       <LoadingScreen />
       <Navbar />
-      
+
       <main className="flex-1">
         <Hero />
         <Services />
         <Projects />
-        <TechStack />
         <AboutMe />
         <WorkProcess />
         <Testimonials />
@@ -32,7 +30,7 @@ export default function HomePage() {
         <Blog />
         <Contact />
       </main>
-      
+
       <Footer />
     </div>
   );

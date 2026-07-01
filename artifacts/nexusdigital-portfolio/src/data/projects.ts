@@ -13,6 +13,7 @@ export type Project = {
   metrics: { label: string; value: string }[];
   challenge: string;
   solution: string;
+  liveUrl: string;
 };
 
 export const projects: Project[] = [
@@ -34,7 +35,8 @@ export const projects: Project[] = [
       { label: 'Uptime', value: '99.9%' }
     ],
     challenge: 'El cliente experimentaba caídas constantes durante los días de rebajas masivas y tiempos de carga inaceptables para un catálogo de más de 50.000 productos. La experiencia de usuario en móvil era deficiente y las conversiones se veían afectadas.',
-    solution: 'Se reescribió la plataforma utilizando una arquitectura basada en microservicios con Node.js y se implementó una base de datos distribuida apoyada con caché en Redis. El frontend se modernizó con React garantizando una experiencia de usuario fluida y orientada a móvil, integrando finalmente un sistema de recomendaciones basado en historial de navegación.'
+    solution: 'Se reescribió la plataforma utilizando una arquitectura basada en microservicios con Node.js y se implementó una base de datos distribuida apoyada con caché en Redis. El frontend se modernizó con React garantizando una experiencia de usuario fluida y orientada a móvil, integrando finalmente un sistema de recomendaciones basado en historial de navegación.',
+    liveUrl: 'https://ecommerce-demo.up.railway.app'
   },
   {
     id: 2,
@@ -54,7 +56,8 @@ export const projects: Project[] = [
       { label: 'Precisión', value: '98%' }
     ],
     challenge: 'El equipo de ventas dedicaba la mayor parte de su tiempo clasificando y asignando leads manualmente, lo que provocaba una demora de hasta 24 horas en el primer contacto. Se necesitaba un sistema para cualificar instantáneamente a los prospectos.',
-    solution: 'Se diseñó un pipeline integral utilizando n8n para conectar los formularios web y redes sociales con OpenAI, que analiza el contenido de cada solicitud para categorizar al lead. Posteriormente, el sistema asigna el lead al agente adecuado o lo introduce en una campaña de nutrición automatizada según su perfil.'
+    solution: 'Se diseñó un pipeline integral utilizando n8n para conectar los formularios web y redes sociales con OpenAI, que analiza el contenido de cada solicitud para categorizar al lead. Posteriormente, el sistema asigna el lead al agente adecuado o lo introduce en una campaña de nutrición automatizada según su perfil.',
+    liveUrl: 'https://pipeline-demo.up.railway.app'
   },
   {
     id: 3,
@@ -74,7 +77,8 @@ export const projects: Project[] = [
       { label: 'Tasa de Respuesta', value: '< 2s' }
     ],
     challenge: 'La inmobiliaria recibía cientos de consultas fuera del horario laboral. Los clientes potenciales se enfriaban antes de ser contactados al día siguiente, perdiendo numerosas oportunidades de venta.',
-    solution: 'Desarrollo de un agente conversacional para WhatsApp capaz de entender lenguaje natural, mostrar propiedades según las necesidades del usuario, responder preguntas frecuentes y agendar visitas automáticamente sincronizando con los calendarios de los agentes de bienes raíces.'
+    solution: 'Desarrollo de un agente conversacional para WhatsApp capaz de entender lenguaje natural, mostrar propiedades según las necesidades del usuario, responder preguntas frecuentes y agendar visitas automáticamente sincronizando con los calendarios de los agentes de bienes raíces.',
+    liveUrl: 'https://bot-demo.up.railway.app'
   },
   {
     id: 4,
@@ -94,6 +98,7 @@ export const projects: Project[] = [
       { label: 'Reducción Tickets', value: '60%' }
     ],
     challenge: 'El equipo de soporte estaba saturado por consultas repetitivas que se encontraban en la documentación. Los usuarios preferían abrir tickets antes que buscar en la base de conocimientos.',
-    solution: 'Implementación de un sistema RAG (Retrieval-Augmented Generation) utilizando LangChain y Pinecone para indexar toda la documentación y tickets históricos. El asistente responde preguntas complejas citando fuentes exactas y escala la conversación a un humano solo cuando es estrictamente necesario, manteniendo el contexto.'
+    solution: 'Implementación de un sistema RAG (Retrieval-Augmented Generation) utilizando LangChain y Pinecone para indexar toda la documentación y tickets históricos. El asistente responde preguntas complejas citando fuentes exactas y escala la conversación a un humano solo cuando es estrictamente necesario, manteniendo el contexto.',
+    liveUrl: 'https://asistente-ia.up.railway.app'
   }
 ];
