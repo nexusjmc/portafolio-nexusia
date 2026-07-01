@@ -47,8 +47,12 @@ export function Navbar() {
       }`}
     >
       <div className="container mx-auto px-4 sm:px-6 h-full flex items-center justify-between gap-4">
-        <Link href="/" className="text-xl font-bold text-primary dark:text-white tracking-tight shrink-0">
-          NexusDigital
+        <Link href="/" className="shrink-0" aria-label="NexusDigital">
+          <img
+            src={theme === 'dark' ? '/logo-blanco.png' : '/logo-negro.png'}
+            alt="NexusDigital"
+            className="h-9 w-auto object-contain"
+          />
         </Link>
 
         {/* ── Desktop Nav ── */}
