@@ -123,16 +123,18 @@ export function Hero() {
         </motion.div>
       </div>
 
-      {/* Scroll indicator */}
-      <motion.div
+      {/* Scroll indicator — clickable */}
+      <motion.button
+        onClick={() => document.querySelector('#servicios')?.scrollIntoView({ behavior: 'smooth' })}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2, duration: 1 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1"
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 group cursor-pointer"
+        aria-label="Ir a servicios"
       >
-        <span className="text-white/40 text-xs tracking-widest uppercase">scroll</span>
-        <ChevronDown className="w-6 h-6 text-white/40 animate-bounce" />
-      </motion.div>
+        <span className="text-white/40 text-xs tracking-widest uppercase group-hover:text-white/70 transition-colors">scroll</span>
+        <ChevronDown className="w-6 h-6 text-white/40 animate-bounce group-hover:text-white/70 transition-colors" />
+      </motion.button>
     </section>
   );
 }
