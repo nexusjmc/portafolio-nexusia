@@ -1,142 +1,196 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { ChevronDown } from 'lucide-react';
+import { ArrowRight, ChevronDown } from 'lucide-react';
+
+const services = [
+  'Desarrollo Web a Medida',
+  'Automatizaciones con IA',
+  'Bots Inteligentes',
+  'E-commerce & Tiendas Online',
+  'Integraciones & APIs',
+  'Consultoría Digital',
+];
+
+const WA_NUMBER = '573001234567';
+const WA_MESSAGE = encodeURIComponent('Hola Miguel, vi tu portafolio y quiero hablar contigo sobre un proyecto.');
+const WA_URL = `https://wa.me/${WA_NUMBER}?text=${WA_MESSAGE}`;
 
 export function Hero() {
-  const roles = [
-    'Desarrollo Web a Medida',
-    'Automatizaciones con IA',
-    'Bots Inteligentes',
-    'E-commerce & Tiendas Online',
-    'Integraciones & APIs',
-    'Consultoría Digital'
-  ];
-
-  const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
-  const [currentText, setCurrentText] = useState('');
-  const [isDeleting, setIsDeleting] = useState(false);
+  const [index, setIndex] = useState(0);
+  const [text, setText] = useState('');
+  const [deleting, setDeleting] = useState(false);
 
   useEffect(() => {
-    const timeout = setTimeout(() => {
-      const fullText = roles[currentRoleIndex];
-
-      if (!isDeleting) {
-        setCurrentText(fullText.substring(0, currentText.length + 1));
-        if (currentText === fullText) {
-          setTimeout(() => setIsDeleting(true), 1500);
-        }
+    const full = services[index];
+    const speed = deleting ? 40 : 90;
+    const t = setTimeout(() => {
+      if (!deleting) {
+        setText(full.slice(0, text.length + 1));
+        if (text.length + 1 === full.length) setTimeout(() => setDeleting(true), 1800);
       } else {
-        setCurrentText(fullText.substring(0, currentText.length - 1));
-        if (currentText === '') {
-          setIsDeleting(false);
-          setCurrentRoleIndex((prev) => (prev + 1) % roles.length);
+        setText(full.slice(0, text.length - 1));
+        if (text.length - 1 === 0) {
+          setDeleting(false);
+          setIndex(p => (p + 1) % services.length);
         }
       }
-    }, isDeleting ? 50 : 100);
-
-    return () => clearTimeout(timeout);
-  }, [currentText, isDeleting, currentRoleIndex, roles]);
-
-  const scrollToProjects = () => {
-    document.querySelector('#proyectos')?.scrollIntoView({ behavior: 'smooth' });
-  };
+    }, speed);
+    return () => clearTimeout(t);
+  }, [text, deleting, index]);
 
   return (
     <section className="relative min-h-[100dvh] flex items-center justify-center overflow-hidden pt-16">
 
-      {/* ── Background: deep gradient + mesh overlay ── */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary via-[#021a8a] to-[#0a0a2e]" />
+      {/* ── Background ── */}
+      <div className="absolute inset-0 bg-[#060618]" />
+      <div className="absolute inset-0 bg-gradient-to-br from-[#0d1b6e]/80 via-[#060618] to-[#060618]" />
 
-      {/* Radial glow top-right */}
-      <div className="absolute -top-32 -right-32 w-[600px] h-[600px] rounded-full bg-accent/30 blur-[120px] pointer-events-none" />
-      {/* Radial glow bottom-left */}
-      <div className="absolute -bottom-20 -left-20 w-[400px] h-[400px] rounded-full bg-[#B3C3FC]/20 blur-[100px] pointer-events-none" />
+      {/* Glow orbs */}
+      <div className="absolute top-[-10%] left-[-5%]  w-[600px] h-[600px] rounded-full bg-[#3D5ED4]/20 blur-[140px] pointer-events-none" />
+      <div className="absolute bottom-[-10%] right-[-5%] w-[500px] h-[500px] rounded-full bg-[#B3C3FC]/10 blur-[130px] pointer-events-none" />
+      <div className="absolute top-[40%] left-[50%] -translate-x-1/2 w-[800px] h-[300px] rounded-full bg-accent/10 blur-[100px] pointer-events-none" />
 
-      {/* Fine grid on top */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.04)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
+      {/* Grid */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:44px_44px] pointer-events-none" />
 
-      {/* Floating orbs */}
-      <motion.div
-        animate={{ y: [0, -20, 0], opacity: [0.3, 0.6, 0.3] }}
-        transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-        className="absolute top-1/4 left-[15%] w-3 h-3 rounded-full bg-accent-light/60 blur-sm"
-      />
-      <motion.div
-        animate={{ y: [0, 15, 0], opacity: [0.2, 0.5, 0.2] }}
-        transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
-        className="absolute bottom-1/3 right-[20%] w-5 h-5 rounded-full bg-accent/40 blur-sm"
-      />
-      <motion.div
-        animate={{ y: [0, -12, 0], opacity: [0.15, 0.4, 0.15] }}
-        transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut', delay: 3 }}
-        className="absolute top-1/2 right-[10%] w-2 h-2 rounded-full bg-white/30 blur-[2px]"
-      />
+      {/* Floating particles */}
+      {[
+        { top: '22%', left: '12%', w: 3, dur: 6, del: 0 },
+        { top: '65%', left: '8%',  w: 2, dur: 9, del: 1.5 },
+        { top: '35%', right: '14%', w: 4, dur: 7, del: 0.5 },
+        { top: '70%', right: '10%', w: 2, dur: 11, del: 2 },
+        { top: '50%', left: '30%',  w: 2, dur: 8, del: 3 },
+        { top: '18%', right: '30%', w: 3, dur: 10, del: 1 },
+      ].map((p, i) => (
+        <motion.div
+          key={i}
+          animate={{ y: [0, -18, 0], opacity: [0.2, 0.55, 0.2] }}
+          transition={{ duration: p.dur, repeat: Infinity, ease: 'easeInOut', delay: p.del }}
+          className="absolute rounded-full bg-accent/50 blur-[2px] pointer-events-none"
+          style={{
+            top: p.top,
+            left: 'left' in p ? p.left : undefined,
+            right: 'right' in p ? p.right : undefined,
+            width: p.w * 4,
+            height: p.w * 4,
+          }}
+        />
+      ))}
 
       {/* ── Content ── */}
       <div className="container mx-auto px-4 sm:px-6 relative z-10 flex flex-col items-center text-center">
 
-        <motion.h1
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.15 }}
-          className="text-[clamp(2rem,5.5vw,5rem)] font-black text-white leading-tight tracking-tight max-w-4xl"
-        >
-          Tu web. Tu bot. Tu IA.<br />
-          <span className="text-[#B3C3FC]">Todo bajo un mismo techo.</span>
-        </motion.h1>
-
+        {/* Top badge */}
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="mt-6 h-9 flex items-center text-xl md:text-2xl font-semibold text-[#B3C3FC]"
+          initial={{ opacity: 0, y: -12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="mb-8 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm px-5 py-2"
         >
-          <span>{currentText}</span>
-          <span className="w-0.5 h-6 bg-[#B3C3FC] ml-1 animate-pulse" />
+          <img src="/logo-blanco.png" alt="NexusDigital" className="h-5 w-auto object-contain opacity-80" />
+          <span className="w-px h-4 bg-white/20" />
+          <span className="text-white/60 text-sm font-medium tracking-wide">Agencia Digital Full-Stack</span>
         </motion.div>
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
+        {/* Headline */}
+        <motion.h1
+          initial={{ opacity: 0, y: 28 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="mt-6 text-base md:text-lg text-white/70 font-medium max-w-2xl leading-relaxed"
+          transition={{ duration: 0.7, delay: 0.1 }}
+          className="text-[clamp(2.4rem,6vw,5.5rem)] font-black leading-[1.08] tracking-tight max-w-4xl"
         >
-          Soy NexusDigital — desarrollador full-stack especializado en automatizaciones e inteligencia artificial para llevar tu negocio al siguiente nivel digital.
+          <span className="bg-gradient-to-r from-white via-white to-white/70 bg-clip-text text-transparent">
+            Tu web. Tu bot.
+          </span>
+          <br />
+          <span className="bg-gradient-to-r from-[#B3C3FC] via-[#8fa8ff] to-[#6B88FF] bg-clip-text text-transparent">
+            Tu IA.
+          </span>
+          <span className="text-white/90"> Todo bajo</span>
+          <br />
+          <span className="text-white/90">un mismo techo.</span>
+        </motion.h1>
+
+        {/* Typewriter pill */}
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.35 }}
+          className="mt-8 inline-flex items-center gap-3 rounded-xl border border-accent/30 bg-accent/10 backdrop-blur-sm px-6 py-3"
+        >
+          <span className="w-2 h-2 rounded-full bg-accent animate-pulse shrink-0" />
+          <span className="text-[#B3C3FC] text-base md:text-lg font-semibold min-w-[220px] text-left">
+            {text}
+            <span className="inline-block w-0.5 h-5 bg-[#B3C3FC] ml-0.5 align-middle animate-pulse" />
+          </span>
+        </motion.div>
+
+        {/* Description */}
+        <motion.p
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.5 }}
+          className="mt-7 text-base md:text-lg text-white/45 max-w-xl leading-relaxed"
+        >
+          Desarrollador full-stack especializado en{' '}
+          <span className="text-white/75 font-medium">automatizaciones e inteligencia artificial</span>{' '}
+          para llevar tu negocio al siguiente nivel digital.
         </motion.p>
 
+        {/* Buttons */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.55 }}
-          className="mt-12 flex flex-col sm:flex-row items-center gap-4"
+          transition={{ duration: 0.5, delay: 0.65 }}
+          className="mt-10 flex flex-col sm:flex-row items-center gap-4"
         >
+          {/* Primary */}
           <button
-            onClick={scrollToProjects}
-            className="bg-accent hover:bg-accent/90 text-white px-8 py-4 rounded-full font-bold text-lg shadow-[0_0_28px_rgba(61,94,212,0.5)] hover:shadow-[0_0_40px_rgba(61,94,212,0.7)] transition-all transform hover:-translate-y-1"
+            onClick={() => document.querySelector('#proyectos')?.scrollIntoView({ behavior: 'smooth' })}
+            className="group relative inline-flex items-center gap-2 bg-gradient-to-r from-accent to-[#6B88FF] hover:from-accent/90 hover:to-[#6B88FF]/90 text-white font-bold text-base px-8 py-4 rounded-2xl shadow-[0_0_32px_rgba(61,94,212,0.45)] hover:shadow-[0_0_48px_rgba(61,94,212,0.65)] transition-all hover:-translate-y-0.5"
           >
             Ver mi trabajo
+            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
           </button>
+
+          {/* Secondary */}
           <a
-            href="#contacto"
-            onClick={e => { e.preventDefault(); document.querySelector('#contacto')?.scrollIntoView({ behavior: 'smooth' }); }}
-            className="border-2 border-white/30 hover:border-white/60 text-white/80 hover:text-white px-8 py-4 rounded-full font-semibold text-lg transition-all"
+            href={WA_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 border border-white/15 hover:border-white/30 bg-white/5 hover:bg-white/10 backdrop-blur-sm text-white/70 hover:text-white font-semibold text-base px-8 py-4 rounded-2xl transition-all hover:-translate-y-0.5"
           >
-            Contáctame
+            Hablemos ahora
           </a>
+        </motion.div>
+
+        {/* Social proof row */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.85 }}
+          className="mt-14 flex flex-wrap justify-center gap-8 text-sm text-white/30"
+        >
+          {[['30+', 'Proyectos'], ['5+', 'Años exp.'], ['24h', 'Respuesta']].map(([val, lbl]) => (
+            <div key={lbl} className="flex flex-col items-center gap-0.5">
+              <span className="text-white/80 font-bold text-lg">{val}</span>
+              <span>{lbl}</span>
+            </div>
+          ))}
         </motion.div>
       </div>
 
-      {/* Scroll indicator — clickable */}
+      {/* Scroll indicator */}
       <motion.button
         onClick={() => document.querySelector('#servicios')?.scrollIntoView({ behavior: 'smooth' })}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.2, duration: 1 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 group cursor-pointer"
+        transition={{ delay: 1.4, duration: 1 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 group cursor-pointer"
         aria-label="Ir a servicios"
       >
-        <span className="text-white/40 text-xs tracking-widest uppercase group-hover:text-white/70 transition-colors">scroll</span>
-        <ChevronDown className="w-6 h-6 text-white/40 animate-bounce group-hover:text-white/70 transition-colors" />
+        <span className="text-white/25 text-[10px] tracking-[0.2em] uppercase group-hover:text-white/50 transition-colors">scroll</span>
+        <ChevronDown className="w-5 h-5 text-white/25 animate-bounce group-hover:text-white/50 transition-colors" />
       </motion.button>
     </section>
   );
