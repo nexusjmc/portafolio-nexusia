@@ -1,6 +1,7 @@
 import { CustomCursor } from '@/components/CustomCursor';
 import { LoadingScreen } from '@/components/LoadingScreen';
 import { Navbar } from '@/components/Navbar';
+import { WhatsAppFloat } from '@/components/WhatsAppFloat';
 import { Hero } from '@/components/Hero';
 import { Services } from '@/components/Services';
 import { Projects } from '@/components/Projects';
@@ -32,6 +33,7 @@ export default function HomePage() {
       </main>
 
       <Footer />
+      <WhatsAppFloat />
     </div>
   );
 }

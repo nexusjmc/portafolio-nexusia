@@ -73,20 +73,6 @@ export function Hero() {
       {/* ── Content ── */}
       <div className="container mx-auto px-4 sm:px-6 relative z-10 flex flex-col items-center text-center">
 
-        {/* Badge / avatar */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="relative mb-8"
-        >
-          <div className="w-32 h-32 rounded-full bg-gradient-to-br from-accent to-[#B3C3FC] border-4 border-white/20 flex items-center justify-center shadow-[0_0_40px_rgba(61,94,212,0.5)]">
-            <span className="text-4xl font-bold text-white tracking-wider">MA</span>
-          </div>
-          {/* Ping ring */}
-          <span className="absolute inset-0 rounded-full border-2 border-accent/40 animate-ping opacity-30" />
-        </motion.div>
-
         <motion.h1
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
