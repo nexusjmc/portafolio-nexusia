@@ -9,7 +9,7 @@ import { AboutMe } from '@/components/AboutMe';
 import { WorkProcess } from '@/components/WorkProcess';
 import { Testimonials } from '@/components/Testimonials';
 import { ClientLogos } from '@/components/ClientLogos';
-import { Blog } from '@/components/Blog';
+// import { Blog } from '@/components/Blog';
 import { Contact } from '@/components/Contact';
 import { Footer } from '@/components/Footer';
 
@@ -28,7 +28,7 @@ export default function HomePage() {
         <WorkProcess />
         <Testimonials />
         <ClientLogos />
-        <Blog />
+        {/* <Blog /> */}
         <Contact />
       </main>
 
