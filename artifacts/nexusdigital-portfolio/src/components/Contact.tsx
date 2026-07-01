@@ -15,13 +15,12 @@ const checks = ['Sin costo inicial', 'Propuesta concreta', 'Sin compromiso'];
 export function Contact() {
   return (
     <section id="contacto" className="relative w-full py-28 overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#060618] via-[#0b1240] to-[#060618]" />
+      {/* Background — same as Hero */}
+      <div className="absolute inset-0 bg-gradient-to-br from-primary via-[#021a8a] to-[#0a0a2e]" />
 
-      {/* Glow top-right */}
-      <div className="absolute -top-32 right-0 w-[560px] h-[560px] rounded-full bg-accent/25 blur-[130px] pointer-events-none" />
-      {/* Glow bottom-left green */}
-      <div className="absolute bottom-0 -left-20 w-[400px] h-[400px] rounded-full bg-[#25D366]/15 blur-[110px] pointer-events-none" />
+      {/* Glow orbs — same as Hero */}
+      <div className="absolute -top-32 -right-32 w-[600px] h-[600px] rounded-full bg-accent/30 blur-[120px] pointer-events-none" />
+      <div className="absolute -bottom-20 -left-20 w-[400px] h-[400px] rounded-full bg-[#B3C3FC]/20 blur-[100px] pointer-events-none" />
 
       {/* Subtle grid */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.025)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.025)_1px,transparent_1px)] bg-[size:52px_52px] pointer-events-none" />
