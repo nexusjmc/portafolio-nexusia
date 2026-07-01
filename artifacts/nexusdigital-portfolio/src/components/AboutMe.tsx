@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
 import { useInView } from '@/hooks/useInView';
-import { Download } from 'lucide-react';
 import { SiGithub, SiReact, SiTypescript, SiTailwindcss, SiNodedotjs, SiPython, SiPostgresql, SiDocker } from 'react-icons/si';
 import { FaLinkedin } from 'react-icons/fa';
 
@@ -130,10 +129,6 @@ export function AboutMe() {
 
             {/* ── Actions ── */}
             <div className="flex flex-wrap items-center gap-4">
-              <button className="flex items-center gap-2 px-6 py-3 bg-accent hover:bg-accent/90 text-white font-semibold rounded-full shadow-lg hover:shadow-accent/30 transition-all hover:-translate-y-0.5">
-                <Download className="w-5 h-5" />
-                Descargar CV
-              </button>
               <a
                 href="https://github.com"
                 target="_blank"

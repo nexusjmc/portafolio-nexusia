@@ -4,10 +4,12 @@ import { ChevronDown } from 'lucide-react';
 
 export function Hero() {
   const roles = [
-    'Full-Stack Developer',
-    'Especialista en Automatización',
-    'Experto en IA',
-    'Builder de Productos Digitales'
+    'Desarrollo Web a Medida',
+    'Automatizaciones con IA',
+    'Bots Inteligentes',
+    'E-commerce & Tiendas Online',
+    'Integraciones & APIs',
+    'Consultoría Digital'
   ];
 
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
@@ -73,22 +75,14 @@ export function Hero() {
       {/* ── Content ── */}
       <div className="container mx-auto px-4 sm:px-6 relative z-10 flex flex-col items-center text-center">
 
-        <motion.p
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.15 }}
-          className="text-[clamp(1.1rem,2.5vw,1.5rem)] font-bold text-[#B3C3FC] tracking-wide mb-4"
-        >
-          Tu web. Tu bot. Tu IA. Todo bajo un mismo techo.
-        </motion.p>
-
         <motion.h1
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-[clamp(2rem,5vw,4.5rem)] font-black text-white leading-tight tracking-tight max-w-4xl"
+          transition={{ duration: 0.6, delay: 0.15 }}
+          className="text-[clamp(2rem,5.5vw,5rem)] font-black text-white leading-tight tracking-tight max-w-4xl"
         >
-          MIGUEL ANGEL QUINTERO GIRALDO
+          Tu web. Tu bot. Tu IA.<br />
+          <span className="text-[#B3C3FC]">Todo bajo un mismo techo.</span>
         </motion.h1>
 
         <motion.div
