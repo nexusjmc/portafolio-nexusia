@@ -73,6 +73,15 @@ export function Hero() {
       {/* ── Content ── */}
       <div className="container mx-auto px-4 sm:px-6 relative z-10 flex flex-col items-center text-center">
 
+        <motion.p
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.15 }}
+          className="text-[clamp(1.1rem,2.5vw,1.5rem)] font-bold text-[#B3C3FC] tracking-wide mb-4"
+        >
+          Tu web. Tu bot. Tu IA. Todo bajo un mismo techo.
+        </motion.p>
+
         <motion.h1
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
@@ -96,9 +105,9 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="mt-6 text-lg md:text-xl text-white/60 font-medium max-w-2xl"
+          className="mt-6 text-base md:text-lg text-white/70 font-medium max-w-2xl leading-relaxed"
         >
-          Transformamos ideas en experiencias digitales que generan impacto real.
+          Soy NexusDigital — desarrollador full-stack especializado en automatizaciones e inteligencia artificial para llevar tu negocio al siguiente nivel digital.
         </motion.p>
 
         <motion.div

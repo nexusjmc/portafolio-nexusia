@@ -2,17 +2,15 @@ import { SiGithub } from 'react-icons/si';
 import { FaLinkedin } from 'react-icons/fa';
 
 export function Footer() {
-  const year = new Date().getFullYear();
-
   return (
     <footer className="bg-primary text-white py-12 border-t border-white/10">
       <div className="container mx-auto px-4 sm:px-6">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
 
           {/* Brand */}
-          <div>
-            <div className="font-bold text-2xl tracking-tight mb-1">NexusDigital</div>
-            <p className="text-white/50 text-sm">Desarrollo Web · Automatización · IA</p>
+          <div className="flex flex-col items-center md:items-start gap-2">
+            <img src="/logo-blanco.png" alt="NexusDigital" className="h-10 w-auto object-contain" />
+            <p className="text-white/40 text-xs">2026 NexusDigital. Todos los derechos reservados.</p>
           </div>
 
           {/* Nav links */}
@@ -41,10 +39,6 @@ export function Footer() {
               <FaLinkedin className="w-5 h-5" />
             </a>
           </div>
-        </div>
-
-        <div className="mt-8 pt-6 border-t border-white/10 text-center text-white/40 text-sm">
-          &copy; {year} NexusDigital — Miguel Ángel Quintero G. Todos los derechos reservados.
         </div>
       </div>
     </footer>
